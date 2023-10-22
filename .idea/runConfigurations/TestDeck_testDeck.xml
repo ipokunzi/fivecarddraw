@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="TestDeck.testDeck" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+    <module name="FiveCardPoker" />
+    <option name="PACKAGE_NAME" value="" />
+    <option name="MAIN_CLASS_NAME" value="TestDeck" />
+    <option name="METHOD_NAME" value="testDeck" />
+    <option name="TEST_OBJECT" value="method" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
