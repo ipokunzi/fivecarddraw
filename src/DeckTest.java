@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
+
 public class DeckTest {
     private Deck deck;
     private List<Card> cards;
@@ -51,7 +52,7 @@ public class DeckTest {
 
     @Test
     public final void testDealCard() {
-        Card topCard = deck.getDeck().get(deck.getDeck().size()-1);
+        Card topCard = deck.getDeck().get(deck.getDeck().size() - 1);
         Card bottomCard = deck.getDeck().get(0);
         Card dealCard = deck.dealCard();
 

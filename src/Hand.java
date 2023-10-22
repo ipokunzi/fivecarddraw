@@ -1,11 +1,12 @@
-import javax.swing.plaf.synth.SynthTextAreaUI;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Hand {
     private List<Card> hand = new ArrayList<>();
 
-    Hand(Deck deck)
-    {
+    Hand(Deck deck) {
         setHand(deck);
     }
 
@@ -14,20 +15,19 @@ public class Hand {
         deck.shuffleDeck();
         List<Card> hand = new ArrayList<>();
 
-        for (int i=0; i<Constants.HAND_SIZE; i++)
-        {
+        for (int i = 0; i < Constants.HAND_SIZE; i++) {
             hand.add(deck.dealCard());
         }
         this.hand = hand;
     }
 
-    public List<Card> getHand(){
+    public List<Card> getHand() {
         return hand;
     }
 
     //Deal a specified number of cards from the deck by removing a card from the top of the deck
     static List<Card> dealHand(List<Card> deck, int numberOfCards) {
-        if(deck == null || numberOfCards == 0){
+        if (deck == null || numberOfCards == 0) {
             throw new IllegalArgumentException("Argument can't be null deck or numberOfCards");
         }
         List<Card> hand = new ArrayList<>();
@@ -38,16 +38,16 @@ public class Hand {
     }
 
     //Check for same sequence in a hand
-    public static boolean sameSequenceOfRanks(List<Card> hand){
+    public static boolean sameSequenceOfRanks(List<Card> hand) {
         for (int i = 0; i < hand.size() - 1; i++) {
-            if(hand.get(i).getRank().getValue() != hand.get(i + 1).getRank().getValue() + 1)
+            if (hand.get(i).getRank().getValue() != hand.get(i + 1).getRank().getValue() + 1)
                 return false;
         }
         return true;
     }
 
     //Check for same suit in a hand
-    public static boolean sameSuit(List<Card> hand){
+    public static boolean sameSuit(List<Card> hand) {
         for (Card c : hand) {
             if (!c.getSuit().equals(hand.get(0).getSuit()))
                 return false;
@@ -56,7 +56,7 @@ public class Hand {
     }
 
     //Group rank occurrences in a map
-    public static HashMap<Rank, Integer> getRankOccurrences(List<Card> hand){
+    public static HashMap<Rank, Integer> getRankOccurrences(List<Card> hand) {
         HashMap<Rank, Integer> cardRankMap = new HashMap<>();
 
         for (Card card : hand) {
@@ -100,9 +100,9 @@ public class Hand {
         int noPair = 0;
 
         for (Map.Entry<Rank, Integer> entry : getRankOccurrences(hand).entrySet()) {
-            if(entry.getValue().equals(4))
+            if (entry.getValue().equals(4))
                 quadrupole++;
-            if(entry.getValue().equals(1))
+            if (entry.getValue().equals(1))
                 noPair++;
         }
         return (quadrupole == 1 && noPair == 1) || (quadrupole == 1 && noPair == 0);
@@ -133,9 +133,9 @@ public class Hand {
         int noPair = 0;
 
         for (Map.Entry<Rank, Integer> entry : getRankOccurrences(hand).entrySet()) {
-            if(entry.getValue().equals(3))
+            if (entry.getValue().equals(3))
                 triplet++;
-            if(entry.getValue().equals(1))
+            if (entry.getValue().equals(1))
                 noPair++;
         }
         return (triplet == 1 && noPair == 2);
@@ -157,23 +157,21 @@ public class Hand {
         int noPair = 0;
 
         for (Map.Entry<Rank, Integer> entry : getRankOccurrences(hand).entrySet()) {
-            if(entry.getValue().equals(2))
+            if (entry.getValue().equals(2))
                 pair++;
-            if(entry.getValue().equals(1))
+            if (entry.getValue().equals(1))
                 noPair++;
         }
-        return ( (pair == 1 && noPair == 3));
+        return ((pair == 1 && noPair == 3));
     }
 
     //Display hand
-    public void displayHand()
-    {
+    public void displayHand() {
         System.out.println("Your hand: " + hand);
     }
 
     //Display hand strength
-    public void displayStrength()
-    {
+    public void displayStrength() {
         System.out.println("Your have: " + evaluateHand(hand));
     }
 }

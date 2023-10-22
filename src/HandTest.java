@@ -1,11 +1,11 @@
 import org.junit.*;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.*;
+
 public class HandTest {
     private Hand hand;
 
@@ -45,7 +45,7 @@ public class HandTest {
     }
 
     @Test
-    public void testHandForDuplicates(){
+    public void testHandForDuplicates() {
         Set<Card> uniqueCards = new HashSet<>();
         boolean duplicate = false;
         for (Card card : hand.getHand()) {
@@ -59,7 +59,7 @@ public class HandTest {
     }
 
     @Test
-    public void testSameSuit(){
+    public void testSameSuit() {
         assertTrue(Hand.sameSuit(List.of(new Card[]{
                 new Card(Rank.TEN, Suit.CLUBS),
                 new Card(Rank.JACK, Suit.CLUBS),
@@ -70,7 +70,7 @@ public class HandTest {
     }
 
     @Test
-    public void testSameSequenceOfRanks(){
+    public void testSameSequenceOfRanks() {
         assertTrue(Hand.sameSequenceOfRanks(List.of(new Card[]{
                 new Card(Rank.NINE, Suit.CLUBS),
                 new Card(Rank.EIGHT, Suit.CLUBS),
@@ -81,7 +81,7 @@ public class HandTest {
     }
 
     @Test
-    public void testEvaluateStraightFlush(){
+    public void testEvaluateStraightFlush() {
         assertEquals(HandStrenght.STRAIGHT_FLUSH, Hand.evaluateHand(List.of(new Card[]{
                 new Card(Rank.QUEEN, Suit.HEARTS),
                 new Card(Rank.JACK, Suit.HEARTS),
@@ -92,7 +92,7 @@ public class HandTest {
     }
 
     @Test
-    public void testEvaluateFourOfAKind(){
+    public void testEvaluateFourOfAKind() {
         assertEquals(HandStrenght.FOUR_OF_A_KIND, Hand.evaluateHand(List.of(new Card[]{
                 new Card(Rank.NINE, Suit.CLUBS),
                 new Card(Rank.NINE, Suit.SPADES),
@@ -126,7 +126,7 @@ public class HandTest {
     }
 
     @Test
-    public void testEvaluateStraight    () {
+    public void testEvaluateStraight() {
         assertEquals(HandStrenght.STRAIGHT, Hand.evaluateHand(List.of(new Card[]{
                 new Card(Rank.SEVEN, Suit.CLUBS),
                 new Card(Rank.SIX, Suit.SPADES),
@@ -137,7 +137,7 @@ public class HandTest {
     }
 
     @Test
-    public void testEvaluateThreeOfAKind    () {
+    public void testEvaluateThreeOfAKind() {
         assertEquals(HandStrenght.THREE_OF_A_KIND, Hand.evaluateHand(List.of(new Card[]{
                 new Card(Rank.TWO, Suit.DIAMONDS),
                 new Card(Rank.TWO, Suit.SPADES),
@@ -155,18 +155,18 @@ public class HandTest {
                 new Card(Rank.FOUR, Suit.CLUBS),
                 new Card(Rank.FOUR, Suit.SPADES),
                 new Card(Rank.NINE, Suit.HEARTS),
-            })));
+        })));
     }
 
     @Test
     public void testEvaluateOnePair() {
-            assertEquals(HandStrenght.ONE_PAIR, Hand.evaluateHand(List.of(new Card[]{
-                    new Card(Rank.FOUR, Suit.HEARTS),
-                    new Card(Rank.FOUR, Suit.SPADES),
-                    new Card(Rank.KING, Suit.SPADES),
-                    new Card(Rank.TEN, Suit.DIAMONDS),
-                    new Card(Rank.FIVE, Suit.SPADES),
-            })));
+        assertEquals(HandStrenght.ONE_PAIR, Hand.evaluateHand(List.of(new Card[]{
+                new Card(Rank.FOUR, Suit.HEARTS),
+                new Card(Rank.FOUR, Suit.SPADES),
+                new Card(Rank.KING, Suit.SPADES),
+                new Card(Rank.TEN, Suit.DIAMONDS),
+                new Card(Rank.FIVE, Suit.SPADES),
+        })));
     }
 
     @Test

@@ -1,5 +1,4 @@
 public enum HandStrenght {
-    ROYAL_FLUSH,
     STRAIGHT_FLUSH,
     FOUR_OF_A_KIND,
     FULL_HOUSE,

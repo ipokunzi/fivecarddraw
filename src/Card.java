@@ -4,7 +4,7 @@ public class Card implements Comparable<Card> {
     private final Suit suit;
 
     public Card(Rank rank, Suit suit) {
-        if(rank == null || suit == null){
+        if (rank == null || suit == null) {
             throw new IllegalArgumentException("Argument can't be null rank or suit");
         }
         this.rank = rank;
